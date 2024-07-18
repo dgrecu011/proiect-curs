@@ -22,6 +22,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Nu sunt necesare stiluri suplimentare */
-</style>
+<style scoped></style>
