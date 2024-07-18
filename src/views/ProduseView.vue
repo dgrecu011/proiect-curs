@@ -7,7 +7,7 @@
       <div
         v-for="product in products"
         :key="product.id"
-        class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs text-center"
+        class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs text-center transform transition-transform duration-300 hover:scale-110"
       >
         <router-link :to="`/produse/${product.id}`">
           <img
