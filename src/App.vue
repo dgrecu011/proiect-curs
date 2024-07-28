@@ -12,6 +12,7 @@
           <router-link to="/produse" class="text-white hover:text-blue-200"
             >Produse</router-link
           >
+          <router-link to="/cart" class="text-white">Coș</router-link>
         </div>
       </div>
     </nav>

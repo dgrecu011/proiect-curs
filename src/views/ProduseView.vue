@@ -11,15 +11,20 @@
       >
         <router-link :to="`/produse/${product.id}`">
           <img
-            :src="product.image"
-            :alt="product.name"
+            :src="
+              product.image ||
+              'https://via.placeholder.com/400x300?text=Image+Not+Available'
+            "
+            :alt="product.model"
             class="w-full h-auto object-cover"
           />
           <div class="p-4">
             <h2 class="text-xl font-semibold text-gray-800 mb-2">
-              {{ product.name }}
+              {{ product.model }}
             </h2>
-            <p class="text-gray-600 mb-4">{{ product.description }}</p>
+            <p class="text-gray-600 mb-4">
+              {{ product.description || "No description available" }}
+            </p>
             <p class="text-lg font-bold text-gray-900">
               {{ product.price }} RON
             </p>
@@ -31,14 +36,27 @@
 </template>
 
 <script>
-import products from "../data/products";
+import axios from "axios";
 
 export default {
   name: "ProduseView",
   data() {
     return {
-      products,
+      products: [],
     };
+  },
+  created() {
+    this.fetchProducts();
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+        const response = await axios.get("http://localhost:3000/iphones");
+        this.products = response.data;
+      } catch (error) {
+        console.error("There was an error fetching the products:", error);
+      }
+    },
   },
 };
 </script>
